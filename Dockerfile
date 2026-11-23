@@ -1,7 +1,10 @@
 FROM python:3.12-slim AS base
 
-ENV PYTHONDONTWRITEBYTECODE=1   # Evite la creation de fichier .pyc dans le conteneur
-ENV PYTHONUNBUFFERED=1  # Affiche les logs python
+# Evite la creation de fichier .pyc dans le conteneur
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Affiche les logs python
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
