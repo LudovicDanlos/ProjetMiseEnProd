@@ -23,3 +23,7 @@ RUN groupadd --system app \
 
 # On indique que les prochains instructions et l'application seront exécutés par l'utilisateur 'app'
 USER app
+
+# On lance les commandes qui permettent de mettre en route l'API
+# ---------------------------- DEPLOIEMENT : Ajouter la commande --reload ----------------------------
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
