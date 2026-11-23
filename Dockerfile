@@ -13,3 +13,13 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 COPY app/ ./app/
 COPY models/ ./models/
+
+# 1. Création d'un groupe système 'app'
+# 2. Création d'un utilisateur 'app' sans accès à un shell de connexion -> on ne peut pas se connecter à cet utilisateur via un terminal ou SSH
+# 3. On donne à notre utilisateur la propriété des fichiers du dossier /app
+RUN groupadd --system app \
+    && useradd --system --gid app --home-dir /app --shell /usr/sbin/nologin app \
+    && chown -R app:app /app
+
+# On indique que les prochains instructions et l'application seront exécutés par l'utilisateur 'app'
+USER app
